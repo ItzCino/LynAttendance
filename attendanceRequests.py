@@ -9,6 +9,16 @@ import attendance
 import requests
 from bs4 import BeautifulSoup
 
+#Insert cookie header below;
+
+# =============================================================
+# =============================================================
+
+# =============================================================
+# =============================================================
+
+#Insert Cookie header above
+
 #Value for up for STARTING WEEK (default = 1)
 startingWeek = 1
 #Value for up for FINISHING WEEK (default value should be the last week)
@@ -39,17 +49,6 @@ totalPresents = 0
 totalAbsents = 0
 totalJustified = 0
 totalLates = 0
-
-#Insert cookie header below;
-
-# =============================================================
-# =============================================================
-
-# =============================================================
-# =============================================================
-
-#Insert Cookie header above
-
 
 #Sets default attendance URL
 parentPortalURL = 'https://lynfield.mystudent.school.nz/attendance/'
