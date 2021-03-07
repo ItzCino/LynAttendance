@@ -103,23 +103,5 @@ def attendances(filename):
     allPeriods = soup.find_all("td")
     totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates = allPeriodAttendance(allPeriods)
 
-
-    formPeriodAttendanceRate = ((formPresent + formJustified + formLate) / totalFormPeriod) * 100
-    allPeriodAttendanceRate = ((totalPresents + totalJustified + totalLates) / totalPeriods) * 100
-
-    print("\nTotal Form Periods: \n")
-    print("Total form periods: %s" % totalFormPeriod)
-    print("Total form periods present (including late periods) : %s" % (formPresent + formLate))
-    print("Total periods late: %s" % formLate)
-    print("Total form periods absent: %s" % formAbsent)
-    print("Total form justified absents: %s" % formJustified)
-    print("Form period Attendance Rate (includes late and justified form periods) : {:4.2f}%".format(formPeriodAttendanceRate)) 
-    print("\n" *2)
-    print("Total Period Attendance:\n ")
-    print("Total periods: %s" % totalPeriods)
-    print("Total periods present (including late periods) : %s" % (totalPresents+ totalLates))
-    print("Total periods late: %s" % totalLates)
-    print("Total periods absent: %s" % totalAbsents)
-    print("Total justified absents: %s" % totalJustified)
-    print("All period Attendance Rate (includes late and justified periods) : {:4.2f}%".format(allPeriodAttendanceRate) )
+    return formPresent, formAbsent, formJustified, formLate, totalFormPeriod, totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates
 
