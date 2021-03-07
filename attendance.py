@@ -2,6 +2,8 @@
 
 from bs4 import BeautifulSoup
 
+def world():
+    print("Hello World!")
 
 def formPeriodAttendance(findsAllTr):
     #Initalises and sets counters for form period attendances to 0
@@ -88,35 +90,36 @@ def allPeriodAttendance(allPeriods):
     
     return (totalPeriodCounter, presentCounter, absentCounter, justifiedCounter, lateCounter)
 
+def attendances(filename):
+    page = open(filename,"r")
+    page = page.read()
+    soup = BeautifulSoup(page, "html.parser")
 
-page = open("htmls/attendance_4.html","r")
-page = page.read()
-soup = BeautifulSoup(page, "html.parser")
+    #for formPeriodAttendance(), returns the form period attendances
+    findsAllTr = soup.find_all('tr')
+    formPresent, formAbsent, formJustified, formLate, totalFormPeriod = formPeriodAttendance(findsAllTr)
 
-#for formPeriodAttendance(), returns the form period attendances
-findsAllTr = soup.find_all('tr')
-formPresent, formAbsent, formJustified, formLate, totalFormPeriod = formPeriodAttendance(findsAllTr)
+    #for allPeriodAttendance, returns the all period attendances
+    allPeriods = soup.find_all("td")
+    totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates = allPeriodAttendance(allPeriods)
 
-#for allPeriodAttendance, returns the all period attendances
-allPeriods = soup.find_all("td")
-totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates = allPeriodAttendance(allPeriods)
 
-formPeriodAttendanceRate = ((formPresent + formJustified + formLate) / totalFormPeriod) * 100
-allPeriodAttendanceRate = ((totalPresents + totalJustified + totalLates) / totalPeriods) * 100
+    formPeriodAttendanceRate = ((formPresent + formJustified + formLate) / totalFormPeriod) * 100
+    allPeriodAttendanceRate = ((totalPresents + totalJustified + totalLates) / totalPeriods) * 100
 
-print("\nTotal Form Periods: \n")
-print("Total form periods: %s" % totalFormPeriod)
-print("Total form periods present (including late periods) : %s" % (formPresent + formLate))
-print("Total periods late: %s" % formLate)
-print("Total form periods absent: %s" % formAbsent)
-print("Total form justified absents: %s" % formJustified)
-print("Form period Attendance Rate (includes late and justified form periods) : {:4.2f}%".format(formPeriodAttendanceRate)) 
-print("\n" *2)
-print("Total Period Attendance:\n ")
-print("Total periods: %s" % totalPeriods)
-print("Total periods present (including late periods) : %s" % (totalPresents+ totalLates))
-print("Total periods late: %s" % totalLates)
-print("Total periods absent: %s" % totalAbsents)
-print("Total justified absents: %s" % totalJustified)
-print("All period Attendance Rate (includes late and justified periods) : {:4.2f}%".format(allPeriodAttendanceRate) )
+    print("\nTotal Form Periods: \n")
+    print("Total form periods: %s" % totalFormPeriod)
+    print("Total form periods present (including late periods) : %s" % (formPresent + formLate))
+    print("Total periods late: %s" % formLate)
+    print("Total form periods absent: %s" % formAbsent)
+    print("Total form justified absents: %s" % formJustified)
+    print("Form period Attendance Rate (includes late and justified form periods) : {:4.2f}%".format(formPeriodAttendanceRate)) 
+    print("\n" *2)
+    print("Total Period Attendance:\n ")
+    print("Total periods: %s" % totalPeriods)
+    print("Total periods present (including late periods) : %s" % (totalPresents+ totalLates))
+    print("Total periods late: %s" % totalLates)
+    print("Total periods absent: %s" % totalAbsents)
+    print("Total justified absents: %s" % totalJustified)
+    print("All period Attendance Rate (includes late and justified periods) : {:4.2f}%".format(allPeriodAttendanceRate) )
 

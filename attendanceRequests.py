@@ -1,3 +1,4 @@
+import attendance
 import requests
 from bs4 import BeautifulSoup
 
@@ -17,8 +18,17 @@ headers = {
 
 dataLoad = {'cookie': '__cfduid=d5dcfa8d93de801286bbc0d54d36c48371614990148; csrf_kamar_cn=b9b41c03c5cf61e3d78e50036e3898d6; kamar_session=d36nsgqk2v2tu6gkr0p7o8hlppjlojhg'}
 
+parentPortalURL = 'https://lynfield.mystudent.school.nz/attendance/'
+parentPortalURLList = list(parentPortalURL)
+for number in range(1, 6):
+    parentPortalURLList = list(parentPortalURL)
+    #print(parentPortalURLList)
+    parentPortalURLList.append(str(number))
+    URL = (''.join(parentPortalURLList))
+filename = "htmls/attendance_3.html"
+attendance.attendances(filename)
 
-response = requests.get('https://lynfield.mystudent.school.nz/attendance/1', headers=headers)
+#response = requests.get('https://lynfield.mystudent.school.nz/attendance/1', headers=headers)
 
-soup = BeautifulSoup(response.content, "html.parser")
-print(soup)
+#soup = BeautifulSoup(response.content, "html.parser")
+#print(soup)
