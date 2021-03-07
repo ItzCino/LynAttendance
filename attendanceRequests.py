@@ -1,7 +1,21 @@
+#######################################################################
+#####VALID COOKIES MUST BE USED OTHER WISE WILL ERROR OUT OR CRASH#####
+#######################################################################
+
+#CURL BASH TO PYTHON COOKIES
+# https://curl.trillworks.com/
+
 import attendance
 import requests
 from bs4 import BeautifulSoup
 
+#Value for up for STARTING WEEK (default = 1)
+startingWeek = 1
+#Value for up for FINISHING WEEK (default value should be the last week)
+finishingWeek = 6
+
+#Initalises and sets values to 0
+#total FINAL values for FORM periods and TOTAL Periods
 sumFormPresent = 0
 sumFormAbsent = 0
 sumFormJustified = 0
@@ -14,32 +28,49 @@ sumTotalAbsents = 0
 sumTotalJustified = 0
 sumTotalLates = 0
 
+#temporory values which are constantly updated and refreshed in function
+formPresent = 0
+formAbsent = 0
+formJustified = 0
+formLate = 0
+totalFormPeriod = 0
+totalPeriods = 0
+totalPresents = 0
+totalAbsents = 0
+totalJustified = 0
+totalLates = 0
 
-headers = {
-    'authority': 'lynfield.mystudent.school.nz',
-    'cache-control': 'max-age=0',
-    'upgrade-insecure-requests': '1',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36 Edg/88.0.705.81',
-    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-    'sec-fetch-site': 'none',
-    'sec-fetch-mode': 'navigate',
-    'sec-fetch-user': '?1',
-    'sec-fetch-dest': 'document',
-    'accept-language': 'en-US,en;q=0.9',
-    'cookie': '__cfduid=d5dcfa8d93de801286bbc0d54d36c48371614990148; csrf_kamar_cn=b9b41c03c5cf61e3d78e50036e3898d6; kamar_session=d36nsgqk2v2tu6gkr0p7o8hlppjlojhg',
-}
+#Insert cookie header below;
 
-dataLoad = {'cookie': '__cfduid=d5dcfa8d93de801286bbc0d54d36c48371614990148; csrf_kamar_cn=b9b41c03c5cf61e3d78e50036e3898d6; kamar_session=d36nsgqk2v2tu6gkr0p7o8hlppjlojhg'}
+# =============================================================
+# =============================================================
 
+# =============================================================
+# =============================================================
+
+#Insert Cookie header above
+
+
+#Sets default attendance URL
 parentPortalURL = 'https://lynfield.mystudent.school.nz/attendance/'
 parentPortalURLList = list(parentPortalURL)
-for number in range(1, 2):
+
+#Requests for attendance data for each URL page by 1 integer increments (by 1 week increments)
+for number in range(startingWeek, (finishingWeek + 1)):
     parentPortalURLList = list(parentPortalURL)
     #print(parentPortalURLList)
     parentPortalURLList.append(str(number))
     URL = (''.join(parentPortalURLList))
-    filename = "htmls/attendance_3.html"
-    formPresent, formAbsent, formJustified, formLate, totalFormPeriod, totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates = attendance.attendances(filename)
+    response = requests.get(URL, headers=headers)
+    try:
+        formPresent, formAbsent, formJustified, formLate, totalFormPeriod, totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates = attendance.attendances(response)
+        
+    except TypeError:
+        print("Invalid Cookies or URLS")
+        print("""
+            Stopped on week {}
+        """.format(number))
+    #Adds attendance data to the SUM of that variable
     sumFormPresent += formPresent
     sumFormAbsent += formAbsent
     sumFormJustified += formJustified
@@ -56,8 +87,12 @@ for number in range(1, 2):
 
 #soup = BeautifulSoup(response.content, "html.parser")
 #print(soup)
+
+#Calculates the attendance rate for both FORM periods and ALL periods 
 formPeriodAttendanceRate = ((sumFormPresent + sumFormJustified + sumFormLate) / sumTotalFormPeriod) * 100
 allPeriodAttendanceRate = ((sumTotalPresents + sumTotalJustified + sumTotalLates) / sumTotalPeriods) * 100
+
+#Prints out final attendance data formatted.
 
 print("\nTotal Form Periods: \n")
 print("Total form periods: %s" % sumTotalFormPeriod)

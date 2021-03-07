@@ -18,7 +18,7 @@ def formPeriodAttendance(findsAllTr):
     #print(findsAllTr)
     for trElem in findsAllTr: 
         #print(trElemCounter)
-        if trElemCounter < 4:
+        if trElemCounter < 3:
             trElemCounter += 1
             continue
 
@@ -40,6 +40,7 @@ def formPeriodAttendance(findsAllTr):
             formAbsentCounter = len(absent_elem)
             formJustifiedCounter = len(justified_elem)
             formLateCounter = len(late_elem)
+            print("present {}".format(formPresentCounter))
             totalFormPeriodCounter = (len(present_elem) + len(absent_elem) + len(justified_elem) + len(late_elem))
             return (formPresentCounter, formAbsentCounter, formJustifiedCounter, formLateCounter, totalFormPeriodCounter)
             break
@@ -90,10 +91,8 @@ def allPeriodAttendance(allPeriods):
     
     return (totalPeriodCounter, presentCounter, absentCounter, justifiedCounter, lateCounter)
 
-def attendances(filename):
-    page = open(filename,"r")
-    page = page.read()
-    soup = BeautifulSoup(page, "html.parser")
+def attendances(response):
+    soup = BeautifulSoup(response.content, "html.parser")
 
     #for formPeriodAttendance(), returns the form period attendances
     findsAllTr = soup.find_all('tr')
