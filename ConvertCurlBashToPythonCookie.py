@@ -55,8 +55,6 @@ curl 'https://lynfield.mystudent.school.nz/attendance' \
 """ 
 
 """
-import requests
-
 headers = {
     'authority': 'lynfield.mystudent.school.nz',
     'cache-control': 'max-age=0',
@@ -72,7 +70,6 @@ headers = {
     'cookie': '__cfduid=d4d0ce098945690961541902c11403a881614837836; kamar_session=a1gvgjm662bvaber3o17hojccuodjjml; csrf_kamar_cn=f58ac3257f267b34d874a47901c9604a',
 }
 
-response = requests.get('https://lynfield.mystudent.school.nz/attendance', headers=headers)
 """
 
 #CurlBashToPythonCookie(curlBash)

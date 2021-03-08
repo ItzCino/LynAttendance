@@ -97,7 +97,8 @@ for number in range(startingWeek, (finishingWeek + 1)):
         
     except TypeError:
         print("Invalid Cookies or URLS")
-        print("\nStopped on week {}".format(number))
+        print("Stopped on week {}".format(number))
+        print("Try again with new cookie!!")
     #Adds attendance data to the SUM of that variable
     sumFormPresent += formPresent
     sumFormAbsent += formAbsent
