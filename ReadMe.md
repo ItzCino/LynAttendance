@@ -4,23 +4,24 @@ WARNING: PYTHON NEEDS TO BE INSTALLED FOR PROGRAM TO RUN
 THIS PROGRAM WAS DESIGNED ON PYTHON VERSION 3.8.0 AND SHOULD WORK WITH NEWER VERSIONS
 
 
-For this set of program to run pip needs to be installed.
-Pip isn't installed, click the link below and follow instructions for installation
+For this program to run, pip must be installed.
+If pip isn't installed, click the link below and follow instructions for installation 
 https://www.liquidweb.com/kb/install-pip-windows/
-If the required packages / libraries are installed feel free to move onto the "How To Use" section of this ReadMe.
 
-Required Libraries / Packages:
 
+REQUIRED LIBRARIES / PACKAGES:
 Request
 BeautifulSoup4
 
-if either library isn't installed then follow the intructions below for installing these packages:
+If the required packages / libraries are installed feel free to move onto the "How To Use" section of this ReadMe. If not continue reading.
+
+If either or both libraries aren't installed, then follow the intructions below for installing these packages:
 (Keep in mind that pip needs to be installed in order for these libraries to be install so if pip isn't installed follow this link: 
 https://www.liquidweb.com/kb/install-pip-windows/ )
 
 Installation for REQUEST package / library:
 
-Simpler Route:
+Simple Route (BOTH python and pip must be install to work) :
 
 1. Navigate to the Packages folder supplied with this repository.
 2. Run the files to install your missing packages / libraries.
@@ -30,7 +31,7 @@ Simpler Route:
 
 ==============================================================
 
-Through CMD / Terminal (More difficult) :
+Through CMD / Terminal (More difficult: BOTH python and pip must be install to work) :
 
 1. launch terminal / cmd.
 2. Type: "python -m pip install requests".
