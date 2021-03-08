@@ -1,8 +1,11 @@
 V1.0
 
 WARNING: PYTHON NEEDS TO BE INSTALLED FOR PROGRAM TO RUN
-THIS PROGRAM WAS DESIGNED ON PYTHON VERSION 3.8.0 AND SHOULD WORK WITH NEWER VERSIONS
+THIS PROGRAM WAS DESIGNED ON PYTHON VERSION 3.8.0 AND SHOULD WORK WITH PYTHON VERSIONS 3.7.X , 3.8.X  and NEWER VERSIONS
 
+For this program to run, Python3 must be installed.
+If Python3 isn't installed, click the link below and follow instructions for installation 
+https://www.python.org/downloads/
 
 For this program to run, pip must be installed.
 If pip isn't installed, click the link below and follow instructions for installation 
