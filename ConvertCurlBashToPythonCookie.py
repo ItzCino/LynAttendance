@@ -4,18 +4,23 @@
 def CurlBashToPythonCookie(curlBash): 
     completedList = []
     completedCookieHeader = {}
-    curlBashRemoveH = curlBash.split(" \
+    curlBashRemoveH = curlBash.split(r" \
   -H ")
-    #print(len(curlBash))
-    #for line in curlBash:
+    #print(curlBashRemoveH)
+    #curlBashRemoveH = ''.join('curlBashSplit')
+    #print(curlBashRemoveH)
+    #print(len(curlBashRemoveH))
+    #for line in curlBashRemoveH:
     #    print(line)
     curlBashRemoveH.remove(curlBashRemoveH[0])
     lastElem = curlBashRemoveH[-1]
     curlBashRemoveH.remove(curlBashRemoveH[-1])
-    lastElem = lastElem.split("   ")
+    lastElem = lastElem.split(r" \
+  ")
     lastElem = lastElem[0]
     curlBashRemoveH.append(lastElem)
     for line in curlBashRemoveH:
+       # print(line)
         splitLine = line.split(": ")
         splitKey = list(splitLine[0])
         splitKey.remove(splitKey[0])
@@ -24,9 +29,11 @@ def CurlBashToPythonCookie(curlBash):
         splitValue.remove(splitValue[-1])
         splitValue = ("".join(splitValue))
         #print(splitKey,":", splitValue)
+        
         completedCookieHeader[splitKey] = splitValue
+        
     #print(completedCookieHeader)
-    return ( completedCookieHeader)
+    return completedCookieHeader
     
 #Testing purposes: uncomment the function caller at the end of program 
 #And replace RETURN with PRINT within the end of the function 
