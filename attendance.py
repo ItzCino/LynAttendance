@@ -2,9 +2,7 @@
 
 from bs4 import BeautifulSoup
 
-def world():
-    print("Hello World!")
-
+#Finds all TR elements for FORM PERIOD
 def formPeriodAttendance(findsAllTr):
     #Initalises and sets counters for form period attendances to 0
     totalFormPeriodCounter = 0
@@ -40,14 +38,14 @@ def formPeriodAttendance(findsAllTr):
             formAbsentCounter = len(absent_elem)
             formJustifiedCounter = len(justified_elem)
             formLateCounter = len(late_elem)
-            print("present {}".format(formPresentCounter))
+            #print("present {}".format(formPresentCounter))
             totalFormPeriodCounter = (len(present_elem) + len(absent_elem) + len(justified_elem) + len(late_elem))
             return (formPresentCounter, formAbsentCounter, formJustifiedCounter, formLateCounter, totalFormPeriodCounter)
             break
 
     
 
-
+#Finds all periods which have values of period; PRESENT, ABSENT, JUSTIFIED, LATE
 def allPeriodAttendance(allPeriods):
     #Initalises and Sets all period counters to 0
     totalPeriodCounter = 0
@@ -101,6 +99,7 @@ def attendances(response):
     #for allPeriodAttendance, returns the all period attendances
     allPeriods = soup.find_all("td")
     totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates = allPeriodAttendance(allPeriods)
+    #print( formPresent, formAbsent, formJustified, formLate, totalFormPeriod, totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates)
 
     return formPresent, formAbsent, formJustified, formLate, totalFormPeriod, totalPeriods, totalPresents, totalAbsents, totalJustified, totalLates
 
