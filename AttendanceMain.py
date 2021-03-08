@@ -11,32 +11,29 @@ import attendance
 import requests
 from bs4 import BeautifulSoup
 
-#Insert cookie header below;
-
-# =============================================================
-# =============================================================
-
-cookie = """
-#Insert cookie header below;
-
-
-
-#Insert Cookie header above
-"""
-
-# =============================================================
-# =============================================================
-
-#Insert Cookie header above
-
 #Value for up for STARTING WEEK (default = 1)
 startingWeek = 1
 #Value for up for FINISHING WEEK (default value should be the last week)
 finishingWeek = 5
 
-headers = ConvertCurlBashToPythonCookie.CurlBashToPythonCookie(cookie)
+#Manual Cookie Inserter for overiding; cookie loop @ line 
+#Insert cookie header below;
 
-#headers = {'csrf_kamar_cn': 'bd2a714b48693186332fd8b67372a776', 'kamar_session': '9n50i4hu17vs8bqb4di0al63o8u6pmvq'}
+# =============================================================
+# =============================================================
+
+#cookie = """
+#Insert cookie header below;
+
+
+
+#Insert Cookie header above
+#"""
+
+# =============================================================
+# =============================================================
+
+#Insert Cookie header above
 
 #Initalises and sets values to 0
 #total FINAL values for FORM periods and TOTAL Periods
@@ -64,6 +61,25 @@ totalAbsents = 0
 totalJustified = 0
 totalLates = 0
 
+#Session Cookie Loop
+print("\nEnter session cookie (instructions on how is in ReadMe.md): ")
+cookieList = []
+cookieInput = ' '
+
+while cookieInput != "":
+    cookieInput = str(input(""))
+    if "--compressed" in cookieInput:
+        cookieList.append(cookieInput)
+        break
+    cookieList.append(cookieInput)
+
+cookieStr = ('\n'.join(cookieList))
+cookie = str(cookieStr)
+
+#Calls CurlBashToPythonCookie from ConvertCurlBashToPythonCookie.py to convert
+#cURL to python dictionary
+headers = ConvertCurlBashToPythonCookie.CurlBashToPythonCookie(cookie)
+
 #Sets default attendance URL
 parentPortalURL = 'https://lynfield.mystudent.school.nz/attendance/'
 parentPortalURLList = list(parentPortalURL)
@@ -81,7 +97,8 @@ for number in range(startingWeek, (finishingWeek + 1)):
         
     except TypeError:
         print("Invalid Cookies or URLS")
-        print("\nStopped on week {}".format(number))
+        print("Stopped on week {}".format(number))
+        print("Try again with new cookie!!")
     #Adds attendance data to the SUM of that variable
     sumFormPresent += formPresent
     sumFormAbsent += formAbsent
@@ -128,3 +145,5 @@ print("Total periods late: %s" % sumTotalLates)
 print("Total periods absent: %s" % sumTotalAbsents)
 print("Total justified absents: %s" % sumTotalJustified)
 print("All period Attendance Rate (includes late and justified periods) : {:4.2f}%".format(allPeriodAttendanceRate) )
+
+
