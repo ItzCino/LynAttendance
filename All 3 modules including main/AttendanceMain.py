@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 #Value for up for STARTING WEEK (default = 1)
 startingWeek = 1
 #Value for up for FINISHING WEEK (default value should be the last week)
-finishingWeek = 5
+finishingWeek = 6
 
 #Manual Cookie Inserter for overiding; cookie loop @ line 
 #Insert cookie header below;
@@ -79,6 +79,7 @@ cookie = str(cookieStr)
 #Calls CurlBashToPythonCookie from ConvertCurlBashToPythonCookie.py to convert
 #cURL to python dictionary
 headers = ConvertCurlBashToPythonCookie.CurlBashToPythonCookie(cookie)
+
 
 #Sets default attendance URL
 parentPortalURL = 'https://lynfield.mystudent.school.nz/attendance/'
