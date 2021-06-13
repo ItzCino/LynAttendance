@@ -241,7 +241,7 @@ for number in range(startingWeek, (finishingWeek + 1)):
     sumFormPresent += formPresent
     sumFormAbsent += formAbsent
     sumFormJustified += formJustified
-    sumFormLate =+ formLate
+    sumFormLate += formLate
     sumTotalFormPeriod += totalFormPeriod
 
     sumTotalPeriods += totalPeriods
