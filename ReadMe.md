@@ -1,10 +1,19 @@
+# LynAttendance
+
+LynAttendance is a terminal based tool to "scan" through the student portal to compile information about your total attendance which calculates your attendance rate.
+This is done by sending requests to the student portal which only returns the your attendence one week at a time which is a limitation due to the layout of the site. 
+This program then uses the structure of the site to extract and compile the attendence information.
+
+>> 🔧 IMPORTANT! : My code here does not follow the best coding practices as it was one of the first projects I have worked on, but it does leave a point in time where I can look back at to see how far I have come.
+
+# Installation
 V1.1
 
-WARNING: USE THIS PROGRAM YOUR OWN RISK, THIS WAS JUST A SMALL SIDE PROJECT OF MINE AND ANY NEW UPDATES TO THE LYNFIELD PARENT PORTAL
+> WARNING: USE THIS PROGRAM YOUR OWN RISK, THIS WAS JUST A SMALL SIDE PROJECT OF MINE AND ANY NEW UPDATES TO THE LYNFIELD STUDENT PORTAL
          MAY BREAK AND DEEM THIS PROGRAM TO NOT WORK. SO YOU THIS PROGRAM AT YOUR OWN RISK AND I AM NOT RESPONSIBLE FOR ANY DAMAGES AS
          YOU ARE CHOOSING TO RUN THIS PROGRAM
 
-WARNING2: PYTHON NEEDS TO BE INSTALLED FOR PROGRAM TO RUN
+> WARNING2: PYTHON NEEDS TO BE INSTALLED FOR PROGRAM TO RUN
 THIS PROGRAM WAS DESIGNED ON PYTHON VERSION 3.8.0 AND SHOULD WORK WITH PYTHON VERSIONS 3.7.X , 3.8.X  and NEWER PYTHON 3.X.X VERSIONS
 
 For this program to run, Python3 must be installed.
@@ -16,7 +25,7 @@ If pip isn't installed, click the link below and follow instructions for install
 https://www.liquidweb.com/kb/install-pip-windows/
 
 
-REQUIRED LIBRARIES / PACKAGES:
+## REQUIRED LIBRARIES / PACKAGES:
 - Request
 - BeautifulSoup4
 
